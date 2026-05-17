@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv11 Dashboard | Object Detection</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Icons -->
+</head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="blob-bg blob-1"></div>
+    <div class="blob-bg blob-2"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="glass-panel main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="gradient-text">YOLO</span> Vision
+                </div>
+                <div class="system-status">
+                    <div class="status-indicator">
+                        <div class="pulse-dot"></div>
+                        <span>Hệ thống đang hoạt động</span>
+                    </div>
+                    <div class="clock" id="live-clock">00:00:00</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            <!-- Left Sidebar -->
+            <aside class="glass-panel sidebar">
+                <h2 class="sidebar-title">Bảng điều khiển</h2>
+                
+                <div class="control-group">
+                    <label for="camera-ip">Nguồn Camera (IP/Index)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="camera-ip" value="0" placeholder="Ví dụ: http://192.../video hoặc 0">
+                    </div>
+                    <button id="btn-update-cam" class="btn-primary">
+                        Cập nhật kết nối
+                    </button>
+                    <p class="hint-text">* Sử dụng số '0' để dùng Webcam mặc định của máy tính.</p>
+                </div>
+
+                <div class="info-group mt-4">
+                    <h3>Thông số Mô hình</h3>
+                    <ul class="stats-list">
+                        <li>
+                            <span class="stat-label">Phiên bản</span>
+                            <span class="stat-value highlight">YOLOv11 (best.pt)</span>
+                        </li>
+                        <li>
+                            <span class="stat-label">Độ phân giải</span>
+                            <span class="stat-value">640x480</span>
+                        </li>
+                        <li>
+                            <span class="stat-label">Ngưỡng tự tin (Conf)</span>
+                            <span class="stat-value">50%</span>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Video Stream Area -->
+            <section class="glass-panel video-section">
+                <div class="video-header">
+                    <h2>Luồng dữ liệu trực tiếp (Real-time Stream)</h2>
+                    <span class="badge">LIVE</span>
+                </div>
+                <div class="video-container">
+                    <div class="corner-brackets corner-tl"></div>
+                    <div class="corner-brackets corner-tr"></div>
+                    <div class="corner-brackets corner-bl"></div>
+                    <div class="corner-brackets corner-br"></div>
+                    
+                    <img src="{{ url_for('video_feed') }}" id="video-stream" alt="Video Stream">
+                    
+                    <!-- Loading skeleton -->
+                    <div class="stream-loading" id="stream-loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Đang kết nối camera...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

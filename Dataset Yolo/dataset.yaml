@@ -1,0 +1,10 @@
+names:
+- class_0
+- class_1
+- class_2
+- class_3
+nc: 4
+path: D:\python\1Demo_YOLO\YoLo_VatThe\Dataset Yolo
+test: test/images
+train: train/images
+val: val/images
