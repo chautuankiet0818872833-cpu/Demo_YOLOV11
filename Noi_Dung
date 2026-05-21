@@ -1,0 +1,13 @@
+YoLo_VatThe/
+├── backend/                  # Chứa toàn bộ logic xử lý backend và Model
+│   ├── app.py                # Server Flask chính
+│   ├── test_cam.py           # Script test camera OpenCV
+│   └── best.pt               # File weights của mô hình YOLOv11
+├── frontend/                 # Chứa giao diện người dùng
+│   ├── static/               # File tĩnh (css, js, ảnh giao diện)
+│   └── templates/            # Giao diện HTML (index.html)
+├── DataSet/                  # Dữ liệu ảnh và nhãn
+├── Dataset Yolo/             # Dataset phân chia train/val/test
+├── img/                      # Ảnh gốc
+├── img_sau_resize/           # Ảnh sau khi resize
+└── .gitignore                # File bỏ qua Git

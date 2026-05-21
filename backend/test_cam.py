@@ -1,8 +1,12 @@
 import cv2
 from ultralytics import YOLO
 
+import os
+
 # 1. Load mô hình đã huấn luyện (đảm bảo file best.pt cùng thư mục với file code này)
-model = YOLO('best.pt')
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir, 'best.pt')
+model = YOLO(model_path)
 
 # 2. Kết nối với Camera điện thoại
 # CÁCH 1: Dùng Wifi qua app IP Webcam (Android)
